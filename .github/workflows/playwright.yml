@@ -18,12 +18,11 @@ jobs:
         node-version: lts/*
     - name: Install dependencies
       run: npm ci
-    - name: Set environment variables
+    - name: Run Playwright tests
       env:
         SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
         SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
         BASE_URL: ${{ vars.BASE_URL }}
-    - name: Run Playwright tests
       run: npx playwright test
     - name: Upload Playwright report
       uses: actions/upload-artifact@v4
